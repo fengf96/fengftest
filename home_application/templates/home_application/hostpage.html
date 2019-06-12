@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <!-- kendo ui css -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/styles/kendo.default.min.css" rel="stylesheet">
+    <!-- font-awesome -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/fontawesome/css/font-awesome.css" rel="stylesheet">
+    <!--蓝鲸提供的公用样式库 -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk_pack.css" rel="stylesheet">
+    <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/echarts-2.0/echarts-all.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <!-- 包括所有kendoui的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/js/kendo.all.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/echarts-2.0/echarts-all.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/bk/js/bk.js"></script>
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="king-page-box">
+        <div class="king-container clearfix">
+            <div class="king-block king-block-bordered king-block-themed mb0">
+                <div class="king-block-header king-info">
+                    <h3 class="king-block-title">主机磁盘信息录入</h3>
+                </div>
+                <div class="king-block-content">
+                    <form class="form-horizontal">
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">主机名：</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control bk-valign-top" id="host_name" placeholder="input host name"> </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">主机ip：</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control bk-valign-top" id="host_ip" placeholder="input ip"> </div>
+                        </div>
+                        <div class="form-group clearfix" id="host_system">
+                            <label class="control-label col-sm-3 bk-lh30 pt0">系统：</label>
+                            <div class="col-sm-9">
+                                <div class="radio pt0">
+                                    <label class="mr10">
+                                        <input type="radio" name="optionsRadios" id="" class="bk-top5" value="windows">
+                                        <span class="bk-lh30">windows</span>
+                                    </label>
+                                    <label class="mr10">
+                                        <input type="radio" name="optionsRadios" id="" class="bk-top5" value="linux">
+                                        <span class="bk-lh30">linux</span>
+                                    </label>
+                                    <label class="mr10">
+                                        <input type="radio" name="optionsRadios" id="" class="bk-top5" value="mac">
+                                        <span class="bk-lh30">mac</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">磁盘分区：</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control bk-valign-top" id="host_partition" placeholder="input disk partition"> </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="button" class="king-btn mr10  king-success" id="submit_button" onclick="postHostData()">提交</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="king-block king-block-bordered king-block-themed mb0">
+                <div class="king-block-header king-info">
+                    <h3 class="king-block-title">主机磁盘信息展示</h3>
+                </div>
+                <div class="king-block-content">
+                    <div class="container-fluid mb0 ">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table mb0 pr15 ranger-box " id="code_1557853450150">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 100px;">#</th>
+                                            <th style="width: 20%;">任务</th>
+                                            <th style="width: 20%;">进度</th>
+                                            <th style="width: 20%;">开发者</th>
+                                            <th>结束时间</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                                <!-- 设置面板Start -->
+                                <template id="header_tpl_1557853450150">
+                                    <tr>
+                                        <th style="width: 100px;">#host_name#</th>
+                                        <th style="width: 20%;">#host_ip#</th>
+                                        <th style="width: 20%;">#host_system#</th>
+                                        <th style="width: 20%;">#host_partition#</th>
+                                        <th>#create_time#</th>
+                                    </tr>
+                                </template>
+                                <template id="tpl_1557853450150">
+                                    <tr>
+                                        <td style="width: 100px;">#host_name#</td>
+                                        <td style="width: 20%;">#host_ip#</td>
+                                        <td style="width: 20%;">#host_system#</td>
+                                        <td style="width: 20%;">#host_partition#</td>
+                                        <td>#create_time#</td>
+                                    </tr>
+                                </template>
+                                <!-- 设置面板End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block extra_block %}
+    <script>$('.nav li:nth-child(3)').addClass("king-navbar-active")</script>
+    <script>
+        // 更新列表
+        var update_table = function() {
+            function renderTpl(str, cfg) {
+                var re = /(#(.+?)#)/g;
+
+                return str.replace(re, function() {
+                    var val = cfg[arguments[2]]+'';
+                    if(typeof val == 'undefined') {
+                        val = '';
+                    }
+                    return val;
+                });
+            }
+
+            // 异步请求后台数据，并填入表格
+            $.ajax({
+                url: '{{ SITE_URL }}hostdata/',
+                type: 'GET',
+                success: function(res){
+                    var _html = ' ';
+                    var list = res.items;
+                    var tpl = $('#tpl_1557853450150').html();
+                    var headerTpl =  $('#header_tpl_1557853450150').html();
+                    for (var i=0,len=list.length; i < len; i++){
+                        var item = list[i];
+                        _html += renderTpl(tpl, item)
+                    }
+                    $('#code_1557853450150 tbody').html(_html);
+                    $('.ranger-box thead').html(renderTpl(headerTpl,res.catalogues));
+                }
+            });
+        };
+        $(function() {
+            update_table(); // 初始化获取表格
+        });
+    </script>
+    <script>
+        // 提交表单到后台
+        var postHostData = function () {
+            $.ajax({
+                url: '{{ SITE_URL }}hostdata/',
+                type: 'post',
+                data: {
+                    "hostname": $('#host_name').val(),
+                    "ip": $('#host_ip').val(),
+                    "system": $('#host_system input:checked').val(),
+                    "partition": $('#host_partition').val(),
+                },
+                success: function (res) {
+                    if (res.code === 0) { // 后台插入成功，刷新表格
+                        update_table();
+                        $('#wrong_msg').remove();
+                        $('.form-horizontal input[type="text"]').val("");
+                    } else {
+                        if ($('#wrong_msg').length > 0) {
+                            $('#wrong_msg').text(res.msg);
+                        } else {
+                            $('#submit_button').parent().append('<span id="wrong_msg" style="color: red;">'+ res.msg +'</span>');
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+{% endblock %}

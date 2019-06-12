@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<title>Early Bird</title>
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bk-icon-2.0/iconfont.css" rel="stylesheet">
+	{{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h2 id="page_title">Hello World Page</h2>
+    <form class="bk-form bk-inline-form">
+        <div class="bk-form-item is-required">
+            <div class="bk-form-content">
+                <input type="text" id="page_input" class="bk-form-input" required="required" placeholder="try input 'Hello Blueking' " style="width:400px;">
+            </div>
+        </div>
+        <div class="bk-form-item">
+            <div class="bk-form-content">
+                <button class="bk-button bk-primary" title="submit" onclick="mySubmit();return false;">submit</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block extra_block %}
+    <script>$('.nav li:nth-child(2)').addClass("king-navbar-active")</script>
+    <script>
+        function mySubmit() {
+            let input = $("#page_input");
+            if (input.val() === "") {
+                input.addClass("is-danger");
+                return;
+            }
+            // 提交输入框的内容到后台
+            $.ajax({
+                url: '{{ SITE_URL }}sayhello/',
+                data: {
+                    'input': input.val(),
+                },
+                type: 'POST',
+                success: function (res) {
+                    $('#page_title').text(res.data); // 设置展示后台结果
+                    input.val("");
+                }
+            });
+        }
+    </script>
+{% endblock %}

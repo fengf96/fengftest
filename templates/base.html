@@ -36,10 +36,12 @@
 	        </div>
 	        <div class="collapse navbar-collapse navbar-responsive-collapse col-md-8 col-sm-8 col-xs-8" id="king-example-navbar-collapse-2" style="float:right;">
 	            <ul class="nav navbar-nav" style="float:right;">
-					{% block navigation %}
-	                <li class=""><a href="{{ SITE_URL }}"><span>首页</span></a></li>
-	                <li class=""><a href="{{ SITE_URL }}contact/"><span>联系我们</span></a></li>
-					{% endblock %}
+                {% block navigation %}
+                    <li class=""><a href="{{ SITE_URL }}"><span>首页</span></a></li>
+                    <li class=""><a href="{{ SITE_URL }}helloworld/"><span>作业1</span></a></li>
+                    <li class=""><a href="{{ SITE_URL }}hostpage/"><span>作业2</span></a></li>
+                    <li class=""><a href="{{ SITE_URL }}contact/"><span>联系我们</span></a></li>
+                {% endblock %}
 	            </ul>
 	        </div>
 	    </div>
