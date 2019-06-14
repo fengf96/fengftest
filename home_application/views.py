@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import re
+import time
 
 from django.shortcuts import render
 
+from home_application import  celery_tasks
 from home_application.models import HostModel
 from my_common.utils import render_json
 
@@ -20,11 +22,18 @@ def hello_world(request):
     """
     return render(request, 'home_application/helloworld.html')
 
-
+def testtask(request):
+    celery_tasks.sayhello.delay()
+    return render_json("hello")
 def say_hello(request):
     """
     作业二后端逻辑验证
     """
+    # print("hello.....")
+    # time.sleep(2)
+    # print("hello.....")
+    # celery_tasks.get_capacity_task()
+
     data = request.POST.get('input', None)
     data = 'Congratulations!\n'+data
     res = {'data': data}
@@ -68,3 +77,35 @@ def host_data(request):
                                 'host_partition': '磁盘分区',
                                 'create_time': '创建时间',
                             }})
+
+def toolshome(request):
+
+    return render(request, 'home_application/toolshome.html')
+
+def savetools(request):
+
+    # if request.method == 'POST':
+    #     toolname = request.POST.get('toolname', None)
+    #     toolclass = request.POST.get('toolclass', None)
+    #
+    #     if "" in [host_name, host_ip, host_system, host_partition]:
+    #         return render_json({'code': -1, 'msg': 'some of params lost.'})
+    #     if re.match('(\d{1,3}\.){3}\d{1,3}', host_ip) is None:
+    #         return render_json({'code': -1, 'msg': 'wrong ip format.'})
+    #
+    #     try:
+    #         HostModel.objects.create(name=host_name, ip=host_ip, system=host_system, disk_partition=host_partition)
+    #     except Exception as e:
+    #         return render_json({'code': -1, 'msg': 'exists same host_ip and host_partition pair.'})
+    #
+    #     return render_json({'code': 0, 'msg': 'data insert success.'})
+    # else:
+    #     return render_json({'code': 0, 'items': HostModel.objects.to_dict(),
+    #                         'catalogues': {
+    #                             'host_name': '主机名',
+    #                             'host_ip': '主机IP',
+    #                             'host_system': '主机系统',
+    #                             'host_partition': '磁盘分区',
+    #                             'create_time': '创建时间',
+    #                         }})
+    pass

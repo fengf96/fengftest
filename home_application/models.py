@@ -37,3 +37,34 @@ class HostModel(models.Model):
     class Meta:
         verbose_name = verbose_name_plural = '主机磁盘信息'
         unique_together = ('ip', 'disk_partition')
+
+
+class ToolsModelManager(models.Manager):
+    def to_dict(self):
+        qs = super().get_queryset()
+        res_dict = [{
+            'toolname': item.toolname,
+            'toolpath': item.toolpath,
+            'toolclass': item.toolclass,
+            'toolcapacity': item.toolcapacity,
+            'recordtime': item.record_time.strftime("%y-%m-%d %H:%M:%S")
+        } for item in qs]
+        return res_dict
+
+
+class ToolsModel(models.Model):
+    CLASS_CHOICES = (
+        ('windows', 'windows'),
+        ('linux', 'linux'),
+        ('mac', 'mac'),
+    )
+    toolname = models.CharField(max_length=128, verbose_name='工具名')
+    toolpath = models.CharField(max_length=128,verbose_name='工具地址')
+    toolclass = models.CharField(choices=CLASS_CHOICES, max_length=30, verbose_name='类别')
+    toolcapacity = models.FloatField(blank=True, null=True, verbose_name='工具(单位Gb)')
+    recordtime = models.DateTimeField(auto_now=True, verbose_name='创建时间')
+
+    objects = ToolsModelManager()
+
+    class Meta:
+        verbose_name = verbose_name_plural = '工具信息'

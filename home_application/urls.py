@@ -23,4 +23,8 @@ urlpatterns = (
     url(r'^sayhello/$', views.say_hello),
     url(r'^hostpage/', views.host_page),
     url(r'^hostdata/', views.host_data),
+
+    url(r'^toolshome/', views.toolshome),
+    url(r'^savetools/', views.savetools),
+    url(r'^testtask/',views.testtask),
 )

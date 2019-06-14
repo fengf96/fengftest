@@ -1,0 +1,412 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>tools home</title>
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/css/bootstrap.min.css"
+          rel="stylesheet">
+    <!-- kendo ui css -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/styles/kendo.common.min.css"
+          rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/styles/kendo.default.min.css"
+          rel="stylesheet">
+    <!-- font-awesome -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/fontawesome/css/font-awesome.css" rel="stylesheet">
+    <!--蓝鲸提供的公用样式库 -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk_pack.css" rel="stylesheet">
+    <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/echarts-2.0/echarts-all.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <!-- 包括所有kendoui的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/js/kendo.all.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/echarts-2.0/echarts-all.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/bk/js/bk.js"></script>
+    <!-- 数据埋点统计 -->
+    <script src="http://magicbox.bk.tencent.com/static_api/analysis.js"></script>
+    <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+    <!--[if lt IE 9]><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/html5shiv.min.js"></script><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/respond.min.js"></script><![endif]-->
+    {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="king-page-box">
+        <div class="king-container clearfix">
+            <nav class="">
+                <div style="overflow:hidden; z-index: inherit;" class="navbar king-horizontal-nav1  f14">
+                    <div class="navbar-container">
+                        <div class="navbar-header pull-left">
+                            <a class="navbar-brand" href="javascript:;">
+                                <img src="https://magicbox.bk.tencent.com/static_api/v3/bk/images/logo.png"
+                                     class="logo"> </a>
+                        </div>
+                        <ul class="nav navbar-nav pull-left m0">
+                            <li class="active"><a href="javascript:void(0);">首页</a></li>
+                            <li><a href="javascript:void(0);">关于我们</a></li>
+                            <li><a href="javascript:void(0);">联系我们</a></li>
+                        </ul>
+                        <div class="navbar-header pull-right">
+                            <ul class="nav">
+                                <li class="user-info">
+                                    <a href="javascript:;">
+                                        <img class="img-rounded"
+                                             src="https://magicbox.bk.tencent.com/static_api/v3/components/horizontal_nav1/images/avatar.png">
+                                        <span>admin</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="king-block king-block-bordered king-block-themed mb0">
+                <div class="king-block-header king-info">
+                    <ul class="king-block-options">
+                        <li>
+                            <!-- <button type="button"><i class="fa fa-cog"></i></button> -->
+                        </li>
+                    </ul>
+                    <h3 class="king-block-title">常用工具</h3>
+                </div>
+                <div class="king-block-content">
+                    <table class="table mb0 pr15 ranger-box2  ">
+                        <thead>
+                        <tr>
+                            <th style="width: 70px;">#</th>
+                            <th style="width: 15%;">名称</th>
+                            <th style="width: 15%;">大小</th>
+                            <th style="width: 15%;">日期</th>
+                            <th style="width: 15%;">类型</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="width: 70px;">1</td>
+                            <td style="width: 15%;">Ravi Kumar</td>
+                            <td style="width: 15%;">India</td>
+                            <td style="width: 15%;">23/12/2012</td>
+                            <td style="width: 15%;">Paid</td>
+                            <td>
+                                <button class="btn btn-xs btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+                                <button class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 70px;">2</td>
+                            <td style="width: 15%;">Ravi Kumar</td>
+                            <td style="width: 15%;">India</td>
+                            <td style="width: 15%;">23/12/2012</td>
+                            <td style="width: 15%;">Paid</td>
+                            <td>
+                                <button class="btn btn-xs btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+                                <button class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 70px;">3</td>
+                            <td style="width: 15%;">Ravi Kumar</td>
+                            <td style="width: 15%;">India</td>
+                            <td style="width: 15%;">23/12/2012</td>
+                            <td style="width: 15%;">Paid</td>
+                            <td>
+                                <button class="btn btn-xs btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+                                <button class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 70px;">4</td>
+                            <td style="width: 15%;">Ravi Kumar</td>
+                            <td style="width: 15%;">India</td>
+                            <td style="width: 15%;">23/12/2012</td>
+                            <td style="width: 15%;">Paid</td>
+                            <td>
+                                <button class="btn btn-xs btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+                                <button class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 70px;">5</td>
+                            <td style="width: 15%;">Ravi Kumar</td>
+                            <td style="width: 15%;">India</td>
+                            <td style="width: 15%;">23/12/2012</td>
+                            <td style="width: 15%;">Paid</td>
+                            <td>
+                                <button class="btn btn-xs btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+                                <button class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 70px;">6</td>
+                            <td style="width: 15%;">Ravi Kumar</td>
+                            <td style="width: 15%;">India</td>
+                            <td style="width: 15%;">23/12/2012</td>
+                            <td style="width: 15%;">Paid</td>
+                            <td>
+                                <button class="btn btn-xs btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+                                <button class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <template id="header_tpl_15603416813712">
+                        <tr>
+                            <th style="width: 70px;">#index#</th>
+                            <th style="width: 15%;">#name#</th>
+                            <th style="width: 15%;">#position#</th>
+                            <th style="width: 15%;">#date#</th>
+                            <th style="width: 15%;">#type#</th>
+                            <th>操作</th>
+                        </tr>
+                    </template>
+                    <template id="tpl_15603416813712">
+                        <tr>
+                            <td style="width: 70px;">#index#</td>
+                            <td style="width: 15%;">#name#</td>
+                            <td style="width: 15%;">#position#</td>
+                            <td style="width: 15%;">#date#</td>
+                            <td style="width: 15%;">#type#</td>
+                            <td>
+                                <button class="btn btn-xs btn-success"><i class="glyphicon glyphicon-ok"></i></button>
+                                <button class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-edit"></i></button>
+                                <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </template>
+                    <!-- 设置面板End -->
+                </div>
+            </div>
+            <div class="king-block king-block-bordered king-block-themed mb0">
+                <div class="king-block-header king-info">
+                    <ul class="king-block-options">
+                        <li>
+                            <!-- <button type="button"><i class="fa fa-cog"></i></button> -->
+                        </li>
+                    </ul>
+                    <h3 class="king-block-title">新增</h3>
+                </div>
+                <div class="king-block-content">
+                    <form class="form-horizontal">
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">名称：</label>
+                            <div class="col-lg-5 col-sm-9">
+                                <input type="text" class="form-control bk-valign-top" id="toolname"
+                                       placeholder="给您的工具取个名字吧">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">类型：</label>
+                            <div class=" col-lg-5 col-sm-9">
+                                <select name="" id="toolclass" class="form-control bk-valign-top">
+                                    <option value="1">选择项1</option>
+                                    <option value="2">选择项2</option>
+                                    <option value="3">选择项3</option>
+                                    <option value="4">选择项4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix ">
+                            <label class="control-label col-sm-3 pt0 bk-h30 bk-lh30">上传压缩包：</label>
+                            <div class="input-group" style="width:600px; display:flex;">
+                                <input type="text" class="form-control" placeholder="在此处粘贴图片网址">
+                                <button type="button" class="btn btn-primary">上传图片</button>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <!-- 拖拽图片到这来 -->
+                                <div class="col-md-5 col-md-offset-1 up-content  dragFile">
+                                    <p style="margin-top:10px;">拖拽图片到这里哟</p>
+                                    <div class="up-area">
+                                        <input type="file" style="display:none;" id="fileDrag" name="fileDragselect"
+                                               multiple>
+                                        <div class="row">
+                                            <ul class="list-group clearfix list-drag">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 点击按钮上传文件 -->
+                                <div class="col-md-5 up-content btnFile">
+                                    <div class="btn">
+                                        <button type="button" class="btn btn-success" id="btn"> 本地上传文件</button>
+                                        <input type="file" style="display:none;" id="fileInput" name="fileselect"
+                                               multiple>
+                                    </div>
+                                    <div class="up-area">
+                                        <div class="row">
+                                            <ul class="list-group clearfix list-btn">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                <button type="button" class="king-btn mr10  king-success" onclick="mySubmit()">提交
+                                </button>
+                                <button type="button" class="king-btn king-default ">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_block %}
+    <style>
+        body, html {
+            margin: 0 auto;
+        }
+
+        .up-header {
+            width: 600px;
+            text-align: center;
+        }
+
+        .up-content {
+            min-height: 200px;
+            border: 1px solid #CCCCCC;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #FAFAFA;
+            color: #999;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .up-area {
+            border: 2px dashed #ccc;
+            margin: 10px 20px 20px 20px;
+            width: 300px;
+            min-height: 200px;
+            line-height: 100px;
+            background-color: #fff;
+        }
+
+        .list-group {
+            margin: 0px auto;;
+            width: 200px;
+            min-height: 100px;
+            padding: 10px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .btn {
+        }
+
+        .close {
+            margin-left: 550px;
+            margin-top: -20px;
+        }
+    </style>
+    <script>
+        //点击本地上传文件
+        $('#btn').click(() => {
+            $('#fileInput').click();
+        })
+        $('#fileInput').change((event) => {
+            var files = event.target.files;
+            appendFile(files, '.list-btn');
+        })
+        //拖拽上传文件 在页面进行预览 上传form用到ajax
+        const dragbox = document.querySelector('.dragFile');
+        dragbox.addEventListener('dragover', function (e) {
+            e.preventDefault(); // 必须阻止默认事件
+        }, false);
+        dragbox.addEventListener('drop', function (e) {
+            e.preventDefault(); // 阻止默认事件
+            var files = e.dataTransfer.files; //获取文件
+            appendFile(files, '.list-drag')
+            // code
+        }, false);
+
+        function appendFile(files, listName) {
+            for (file of files) {
+                let url = window.URL.createObjectURL(file);
+                let liStr = `
+            <li class="list-group-item">
+              <div>
+                <img src="${url}" alt="文件" />
+              </div>
+            </li>
+          `;
+                $(listName).append(liStr);
+            }
+        }
+
+        function mySubmit() {
+            let toolname = $("#toolname");
+            let toolclass = $("#toolclass");
+            if (toolname.val() === "") {
+                toolname.addClass("is-danger");
+                return;
+            }
+            // 提交输入框的内容到后台
+            $.ajax({
+                url: '{{ SITE_URL }}savetools/',
+                data: {
+                    'toolname': toolname.val(),
+                    'toolclass': toolclass.val(),
+                },
+                type: 'POST',
+                success: function (res) {
+                    $('#page_title').text(res.data); // 设置展示后台结果
+                    input.val("");
+                }
+            });
+        }
+
+        $(function () {
+            function renderTpl(str, cfg) {
+                var re = /(#(.+?)#)/g;
+
+                return str.replace(re, function () {
+                    var val = cfg[arguments[2]] + '';
+                    if (typeof val == 'undefined') {
+                        val = '';
+                    }
+                    return val;
+                });
+            }
+
+            // 异步请求后台数据
+            $.ajax({
+                url: 'https://magicbox.bk.tencent.com/static_api/v3/components/table7/data.json',
+                type: 'GET',
+                success: function (res) {
+                    var _html = ' ';
+                    var list = res.items;
+                    var tpl = $('#tpl_15603416813712').html();
+                    var headerTpl = $('#header_tpl_15603416813712').html();
+                    for (var i = 0, len = list.length; i < len; i++) {
+                        var item = list[i];
+                        _html += renderTpl(tpl, item)
+                    }
+                    $('.ranger-box2 tbody').html(_html);
+                    $('.ranger-box2 thead').html(renderTpl(headerTpl, res.catalogues));
+                }
+            });
+        });
+    </script>
+{% endblock %}
